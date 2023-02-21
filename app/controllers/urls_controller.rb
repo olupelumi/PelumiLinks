@@ -25,5 +25,7 @@ class UrlsController < ApplicationController
     end 
 
     def destroy
+        @url = Url.destroy_by(shortcut: params[:shortcut])
+        render json: Url.all
     end
 end
