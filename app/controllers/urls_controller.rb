@@ -17,6 +17,11 @@ class UrlsController < ApplicationController
     end 
 
     def update
+        @url = Url.find_by(shortcut: params[:shortcut])
+        @url.update(long_url: params[:long_url])
+       # I initially said the response here should return all the mappings but I think it's better to have it show the updated mapping. 
+       # TODO: Update the design
+        render json: @url 
     end 
 
     def destroy
