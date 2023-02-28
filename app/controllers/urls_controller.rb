@@ -6,7 +6,7 @@ class UrlsController < ApplicationController
 
     def show
         @url = Url.find_by(shortcut: params[:shortcut])
-        render json: @url
+        redirect_to "https://www." + @url.long_url, allow_other_host: true
     end
 
     def create 
