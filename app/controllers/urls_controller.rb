@@ -10,10 +10,13 @@ class UrlsController < ApplicationController
     end
 
     def create 
-        @url = Url.create(shortcut: params[:shortcut], long_url: params[:long_url])
-        # TODO: make it so we don't have duplicate articles. This may be done in the model as a validation instead though. 
-        # TODO: Add some error handling
-        render json: Url.all
+        @url = Url.new(shortcut: params[:shortcut], long_url: params[:long_url])
+        if @url.save
+            render json: Url.all
+        else
+            render json: {error: "Error creating a new url redirect"}
+        end 
+
     end 
 
     def update
@@ -21,6 +24,7 @@ class UrlsController < ApplicationController
         @url.update(long_url: params[:long_url])
        # I initially said the response here should return all the mappings but I think it's better to have it show the updated mapping. 
        # TODO: Update the design
+       # TODO Add some try catch or something here for updating. What if the shortcut doesn't exist
         render json: @url 
     end 
 
