@@ -6,7 +6,11 @@ class UrlsController < ApplicationController
 
     def show
         @url = Url.find_by(shortcut: params[:shortcut])
-        redirect_to "https://www." + @url.long_url, allow_other_host: true
+        unless @url
+            render json: {error: 'shortcut not found'}, status: 404
+        else
+            redirect_to "https://www." + @url.long_url, allow_other_host: true
+        end
     end
 
     def create 
@@ -16,16 +20,16 @@ class UrlsController < ApplicationController
         else
             render json: {error: "Error creating a new url redirect"}
         end 
-
     end 
 
     def update
         @url = Url.find_by(shortcut: params[:shortcut])
-        @url.update(long_url: params[:long_url])
-       # I initially said the response here should return all the mappings but I think it's better to have it show the updated mapping. 
-       # TODO: Update the design
-       # TODO Add some try catch or something here for updating. What if the shortcut doesn't exist
-        render json: @url 
+        unless @url
+            render json: {error: 'shortcut not found'}, status: 404
+        else
+            @url.update(long_url: params[:long_url])
+            render json: @url 
+        end
     end 
 
     def destroy
