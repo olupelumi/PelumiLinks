@@ -1,24 +1,31 @@
-# README
+## Background and Problem
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- I’m looking to build a small full-stack project to get my feet wet with working on full stack web applications
+- It’ll make searching up deep links that I use somewhat often super quick for me [by using some type of link that uses a systematic code]
+    - will start with me saving associations but maybe I can do a systematic code based on how the site does their URLs
 
-Things you may want to cover:
+Go links 
 
-* Ruby version
+[GoLinks](https://chrome.google.com/webstore/detail/golinks/mdkgfdijbhbcbajcdlebbodoppgnmhab?hl=en-US)
 
-* System dependencies
+Tiny Url 
 
-* Configuration
+## Solution
 
-* Database creation
+URL redirecting system 
+Link to the [Notion page](https://www.notion.so/pelumi/Tinyurl-golink-alternative-b6670a749a084ad7886e09d931a7d16e)
 
-* Database initialization
+Specs:
 
-* How to run the test suite
+- [domain name].com/urls/{shortcut}
+    - {shortcut} maps to a website like notion.com/SideProject
+- The mapping should be a 1:1 function
+    - Two shortcuts can’t map to the same website
+    - One link can’t be mapped to from the same shortcut
+- Creation, reading, updating, and deletion of a mapping should be supported.
+- No chrome extension like go link - Just a web page at the moment
 
-* Services (job queues, cache servers, search engines, etc.)
+******MVP:******
 
-* Deployment instructions
-
-* ...
+- Enable CRUD shortcut, long URL pairings, and rerouting without a frontend
+    - Can just CRUD via postman for now.
