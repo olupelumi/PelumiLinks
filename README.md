@@ -15,6 +15,8 @@ Tiny Url
 URL redirecting system 
 Link to the [Notion page](https://www.notion.so/pelumi/Tinyurl-golink-alternative-b6670a749a084ad7886e09d931a7d16e)
 
+![image](https://user-images.githubusercontent.com/43530539/224586908-321258cc-6a12-48ed-b196-5f58c4bbf2ef.png)
+
 Specs:
 
 - [domain name].com/urls/{shortcut}
