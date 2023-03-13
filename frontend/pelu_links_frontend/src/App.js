@@ -2,23 +2,17 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // TODO: fetch shorcut information, create ui to show shortcuts and longurls,
+  // Have the proper shortcuts and urls actually show up in the ui
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Today
-        </a>
-      </header>
+    <>
+    <h1>Pelumi Links</h1>
+    <div>
+      hi there
+      <input></input>
+      <input></input>
     </div>
+    </>
   );
 }
 
