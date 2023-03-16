@@ -2,34 +2,45 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
 
+
+const UrlBlock = ({shortcut, long_url}) =>
+{
+return (
+  <>
+  <div>
+    {shortcut}
+  </div>
+  <div>
+    {long_url}
+  </div>
+  </>
+)}
+
 function App() {
   // TODO: create ui to show shortcuts and longurls,
-  // Have the proper shortcuts and urls actually show up in the ui
   // Then think about how to make the fetched information persist
+  // Create a popup for when I want to update a shortcut/url 
 
-  const [urls, setUrls] = useState();
+  const [urls, setUrls] = useState([]);
 
 
   useEffect(() => {
     axios.get('http://127.0.0.1:3000')
       .then(response => {
         setUrls(response.data);
-        console.log(response)
+        console.log(response.data)
       })
       .catch(error => {
         console.error(error);
       });
   }, []);
 
-
   return (
     <>
     <h1>Pelumi Links</h1>
-    <div>
-      hi there
-      <input></input>
-      <input></input>
-    </div>
+    {urls.map(
+      url => <UrlBlock shortcut={url.shortcut} long_url={url.long_url}/>
+    )}
     </>
   );
 }
