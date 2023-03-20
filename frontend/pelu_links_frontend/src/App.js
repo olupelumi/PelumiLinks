@@ -55,9 +55,11 @@ const Page = (props) => {
 }
 
 function App() {
+  // Create
+  // Read - done
+  // Update - done
+  // Delete
   // Add a size length for shortcuts and show the long urls up to a certain length
-  // Then think about how to make the fetched information persist
-  // Create a popup for when I want to update a shortcut/url
   // Make the ui actially look nice 
 
   const [urls, setUrls] = useState([]);
