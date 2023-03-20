@@ -28,6 +28,20 @@
   color: #61dafb;
 }
 
+:root {
+  --specifiedColumnSize: 150px
+}
+
+.urlTableHeader {
+  display: grid;
+  grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto auto; 
+}
+.urlBlock {
+  display: grid;
+  border-style: solid;
+  grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto auto; 
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
