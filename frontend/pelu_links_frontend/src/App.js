@@ -45,6 +45,34 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
     </div>
   ) 
 }
+const UrlCreate = ({setUrls, setShowCreate}) => {
+  const [longUrl, setLongUrl] = useState("")
+  const [shortcut, setShortcut] = useState("")
+
+  const createURl = () => {
+    axios.post(`http://127.0.0.1:3000/urls/`, {shortcut: shortcut, long_url: longUrl})
+      .then(response => {
+        setUrls(response.data);
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  return (
+    <div>
+      <div>
+        Shortcut:<input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input> 
+      </div>
+      <div>
+        Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
+      </div>
+      <button onClick={() => {createURl(); setShowCreate(false);}}>Create</button>
+      <button onClick={() => setShowCreate(false)}> Close </button> 
+    </div>
+  ) 
+}
 
 const Page = (props) => {
   return (
@@ -55,16 +83,19 @@ const Page = (props) => {
 }
 
 function App() {
-  // Create
+  // Create - done
   // Read - done
   // Update - done
-  // Delete
+  // Delete - create a separate div and then disable the delete button
   // Add a size length for shortcuts and show the long urls up to a certain length
   // Make the ui actially look nice 
+  // Responsive Design - Mobile first perhaps
+  // Update the readme
+  // Reaorganize where code lives in the files
 
   const [urls, setUrls] = useState([]);
   const [showEdit, setShowEdit] = useState(false)
-
+  const [showCreate, setShowCreate] = useState(false)
   useEffect(() => {
     axios.get('http://127.0.0.1:3000')
       .then(response => {
@@ -86,6 +117,8 @@ function App() {
       url => <UrlBlock key={url.shortcut} shortcut={url.shortcut} long_url={url.long_url} setShowEdit={setShowEdit}/>
     )}
     {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit} setUrls={setUrls}/>}
+    {showCreate && <UrlCreate setUrls={setUrls} setShowCreate={setShowCreate}/>}
+    <button onClick={() => setShowCreate(true)}> Create new Pelumi link</button>
     </Page>
   );
 }
