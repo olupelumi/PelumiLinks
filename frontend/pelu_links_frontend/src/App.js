@@ -19,16 +19,28 @@ return (
   </div>
 )}
 
-const UrlEdit = ({shortcut, long_url, setShowEdit}) => {
+const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
   const [longUrl, setLongUrl] = useState(long_url)
+  const updateURl = () => {
+    axios.put(`http://127.0.0.1:3000/urls/${shortcut}`, {long_url: longUrl})
+      .then(response => {
+        setUrls(response.data);
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
   return (
     <div>
       <div>
         Shortcut: {shortcut}
       </div>
       <div>
-        Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value) }></input>
+        Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
+  
       </div>
+      <button onClick={() => {updateURl(); setShowEdit(false)}}>Update</button>
       <button onClick={() => setShowEdit(false)}>close</button>
     </div>
   ) 
@@ -71,7 +83,7 @@ function App() {
     {urls.map(
       url => <UrlBlock key={url.shortcut} shortcut={url.shortcut} long_url={url.long_url} setShowEdit={setShowEdit}/>
     )}
-    {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit}/>}
+    {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit} setUrls={setUrls}/>}
     </Page>
   );
 }

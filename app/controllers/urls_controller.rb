@@ -28,7 +28,7 @@ class UrlsController < ApplicationController
             render json: {error: 'shortcut not found'}, status: 404
         else
             @url.update(long_url: params[:long_url])
-            render json: @url 
+            render json: Url.all 
         end
     end 
 
