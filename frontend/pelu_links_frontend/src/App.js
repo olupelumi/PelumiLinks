@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios'
 
 
-const UrlBlock = ({shortcut, long_url, setShowEdit}) =>
+const UrlBlock = ({shortcut, long_url, setShowEdit, setShowDelete}) =>
 {
 return (
   <div className='urlBlock'>
@@ -15,7 +15,10 @@ return (
   </div>
  <button onClick={()=> setShowEdit({shortcut, long_url})}>
   edit
-  </button> 
+  </button>
+  <button onClick={()=> setShowDelete({shortcut, long_url})}>
+  delete
+  </button>  
   </div>
 )}
 
@@ -45,6 +48,33 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
     </div>
   ) 
 }
+const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
+  const deleteURl = () => {
+    axios.delete(`http://127.0.0.1:3000/urls/${shortcut}`)
+      .then(response => {
+        setUrls(response.data);
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  return (
+    <div>
+      Are you sure you want to delete?
+      <div>
+        Shortcut: {shortcut}
+      </div>
+      <div>
+        Long Url: {long_url}
+      </div>
+      <button onClick={() => {deleteURl(); setShowDelete(false)}}>Yes</button>
+      <button onClick={() => setShowDelete(false)}>No</button>
+    </div>
+  ) 
+}
+
 const UrlCreate = ({setUrls, setShowCreate}) => {
   const [longUrl, setLongUrl] = useState("")
   const [shortcut, setShortcut] = useState("")
@@ -75,6 +105,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
 }
 
 const Page = (props) => {
+
   return (
     <div style={{margin: 'auto 20px auto 20px'}}>
       {props.children}
@@ -86,7 +117,7 @@ function App() {
   // Create - done
   // Read - done
   // Update - done
-  // Delete - create a separate div and then disable the delete button
+  // Delete - create a separate div 
   // Add a size length for shortcuts and show the long urls up to a certain length
   // Make the ui actially look nice 
   // Responsive Design - Mobile first perhaps
@@ -95,6 +126,7 @@ function App() {
 
   const [urls, setUrls] = useState([]);
   const [showEdit, setShowEdit] = useState(false)
+  const [showDelete, setShowDelete] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
   useEffect(() => {
     axios.get('http://127.0.0.1:3000')
@@ -114,10 +146,11 @@ function App() {
       <div>Shortcuts</div><div>Long Urls</div>
     </div>
     {urls.map(
-      url => <UrlBlock key={url.shortcut} shortcut={url.shortcut} long_url={url.long_url} setShowEdit={setShowEdit}/>
+      url => <UrlBlock key={url.shortcut} shortcut={url.shortcut} long_url={url.long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete}/>
     )}
     {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit} setUrls={setUrls}/>}
     {showCreate && <UrlCreate setUrls={setUrls} setShowCreate={setShowCreate}/>}
+    {showDelete && <UrlDelete shortcut={showDelete.shortcut} long_url={showDelete.long_url} setShowDelete={setShowDelete} setUrls={setUrls}/>}
     <button onClick={() => setShowCreate(true)}> Create new Pelumi link</button>
     </Page>
   );
