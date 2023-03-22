@@ -1,7 +1,7 @@
 ## [In progress]
 ## Background and Problem
 
-- I’m looking to build a small full-stack project to get my feet wet with working on full stack web applications
+- I’m looking to build a small full-stack project to continue improving my ability to work on full stack web applications
 - It’ll make searching up deep links that I use somewhat often super quick for me [by using some type of link that uses a systematic code]
     - will start with me saving associations but maybe I can do a systematic code based on how the site does their URLs
 
