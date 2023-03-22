@@ -1,3 +1,4 @@
+## [In progress]
 ## Background and Problem
 
 - I’m looking to build a small full-stack project to get my feet wet with working on full stack web applications
