@@ -5,21 +5,31 @@ import axios from 'axios'
 
 const UrlBlock = ({shortcut, long_url, setShowEdit, setShowDelete}) =>
 {
+  const [isOpen, setIsOpen] = useState(false)
 return (
+  <>
   <div className='urlBlock'>
+    <div>
+      {shortcut}
+    </div>
+    <div>
+      {long_url}
+    </div>
+    <div style={{cursor: 'pointer'}} onClick={()=> setIsOpen(!isOpen)}>
+      {isOpen ? '-': '+'}
+    </div>
+  </div>
+  { isOpen &&
   <div>
-    {shortcut}
+      <button onClick={() => setShowEdit({ shortcut, long_url })}>
+        edit
+      </button>
+      <button onClick={() => setShowDelete({ shortcut, long_url })}>
+        delete
+      </button>
   </div>
-  <div>
-    {long_url}
-  </div>
- <button onClick={()=> setShowEdit({shortcut, long_url})}>
-  edit
-  </button>
-  <button onClick={()=> setShowDelete({shortcut, long_url})}>
-  delete
-  </button>  
-  </div>
+  }
+  </>
 )}
 
 const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
@@ -117,10 +127,13 @@ function App() {
   // Create - done
   // Read - done
   // Update - done
-  // Delete - create a separate div 
-  // Add a size length for shortcuts and show the long urls up to a certain length
-  // Make the ui actially look nice 
+  // Delete - create a separate div - done 
+  // Make the ui actially look nice - design both desktop and mobile views -look at some design references
   // Responsive Design - Mobile first perhaps
+    // Add a size length for shortcuts and show the long urls up to a certain length
+    // Add Material ui icons
+    // Create an accordon component on mobile
+    // Have the accordion component turn into a full row when on desktop
   // Update the readme
   // Reaorganize where code lives in the files
 
