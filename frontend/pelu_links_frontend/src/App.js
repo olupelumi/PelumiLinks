@@ -2,32 +2,76 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
 
+const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
+  const [isOpen, setIsOpen] = useState(false)
+    
+  return (
+    <>
+    <div className='urlBlock Mobile'>
+      <div>
+        {shortcut}
+      </div>
+      <div>
+        {long_url}
+      </div>
+      <div style={{cursor: 'pointer'}} onClick={()=> setIsOpen(!isOpen)}>
+        {isOpen ? '-': '+'}
+      </div>
+    </div>
+    { isOpen &&
+    <div>
+        <button onClick={() => setShowEdit({ shortcut, long_url })}>
+          edit
+        </button>
+        <button onClick={() => setShowDelete({ shortcut, long_url })}>
+          delete
+        </button>
+    </div>
+    }
+    </>)
+}
+
+const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
+
+  return (
+    <>
+    <div className='urlBlock Desktop'>
+      <div>
+        {shortcut}
+      </div>
+      <div>
+        {long_url}
+      </div>
+        <button onClick={() => setShowEdit({ shortcut, long_url })}>
+          edit
+        </button>
+        <button onClick={() => setShowDelete({ shortcut, long_url })}>
+          delete
+        </button>
+    </div>
+    </>
+  )
+}
 
 const UrlBlock = ({shortcut, long_url, setShowEdit, setShowDelete}) =>
 {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false) 
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
+  useEffect(()=> {
+    window.addEventListener('resize', handleResize)
+  }, [])
+
 return (
   <>
-  <div className='urlBlock'>
-    <div>
-      {shortcut}
-    </div>
-    <div>
-      {long_url}
-    </div>
-    <div style={{cursor: 'pointer'}} onClick={()=> setIsOpen(!isOpen)}>
-      {isOpen ? '-': '+'}
-    </div>
-  </div>
-  { isOpen &&
-  <div>
-      <button onClick={() => setShowEdit({ shortcut, long_url })}>
-        edit
-      </button>
-      <button onClick={() => setShowDelete({ shortcut, long_url })}>
-        delete
-      </button>
-  </div>
+  {isMobile? (<UrlBlockMobile shortcut={shortcut} long_url={long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete}/>):
+  <UrlBlockDesktop shortcut={shortcut} long_url={long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete}/>
   }
   </>
 )}

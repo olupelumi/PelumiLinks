@@ -39,7 +39,14 @@
 .urlBlock {
   display: grid;
   border-style: solid;
+}
+
+.Mobile {
   grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto;
+}
+
+.Desktop {
+  grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto auto;
 }
 
 @keyframes App-logo-spin {
