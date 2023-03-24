@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
+import {KeyboardArrowDown,  KeyboardArrowUp, Edit, Delete} from '@mui/icons-material';
 
 const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   const [isOpen, setIsOpen] = useState(false)
     
   return (
-    <>
-    <div className='urlBlock Mobile'>
-      <div>
-        {shortcut}
-      </div>
-      <div>
-        {long_url}
-      </div>
-      <div style={{cursor: 'pointer'}} onClick={()=> setIsOpen(!isOpen)}>
-        {isOpen ? '-': '+'}
-      </div>
-    </div>
-    { isOpen &&
+  <>
+  <div className='urlBlock Mobile'>
     <div>
-        <button onClick={() => setShowEdit({ shortcut, long_url })}>
-          edit
-        </button>
-        <button onClick={() => setShowDelete({ shortcut, long_url })}>
-          delete
-        </button>
+      {shortcut}
     </div>
-    }
-    </>)
+    <div>
+      {long_url}
+    </div>
+    <div style={{cursor: 'pointer'}} onClick={()=> setIsOpen(!isOpen)}>
+      {isOpen? <KeyboardArrowUp/>: <KeyboardArrowDown/>}
+    </div>
+  </div>
+  { isOpen &&
+  <div>
+    <Edit onClick={() => setShowEdit({ shortcut, long_url })}/> 
+    <Delete onClick={() => setShowDelete({ shortcut, long_url })}/>
+  </div>
+  }
+  </>)
 }
 
 const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
@@ -42,12 +39,8 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
       <div>
         {long_url}
       </div>
-        <button onClick={() => setShowEdit({ shortcut, long_url })}>
-          edit
-        </button>
-        <button onClick={() => setShowDelete({ shortcut, long_url })}>
-          delete
-        </button>
+      <Edit onClick={() => setShowEdit({ shortcut, long_url })}/>
+      <Delete onClick={() => setShowDelete({ shortcut, long_url })}/>
     </div>
     </>
   )
@@ -172,12 +165,13 @@ function App() {
   // Read - done
   // Update - done
   // Delete - create a separate div - done 
-  // Make the ui actially look nice - design both desktop and mobile views -look at some design references
+  // Make the ui actially look nice - design both desktop and mobile views -look at some design references - done
   // Responsive Design - Mobile first perhaps
     // Add a size length for shortcuts and show the long urls up to a certain length
-    // Add Material ui icons
-    // Create an accordon component on mobile
-    // Have the accordion component turn into a full row when on desktop
+    // Add Material ui icons - done
+    // Create an accordon component on mobile - done
+    // Have the accordion component turn into a full row when on desktop - done
+  // Create the modals when I'm doing actions on the pelumi links (create, updaate, delete)
   // Update the readme
   // Reaorganize where code lives in the files
 
