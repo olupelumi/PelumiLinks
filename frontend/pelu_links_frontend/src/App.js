@@ -198,7 +198,7 @@ function App() {
     {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit} setUrls={setUrls}/>}
     {showCreate && <UrlCreate setUrls={setUrls} setShowCreate={setShowCreate}/>}
     {showDelete && <UrlDelete shortcut={showDelete.shortcut} long_url={showDelete.long_url} setShowDelete={setShowDelete} setUrls={setUrls}/>}
-    <button onClick={() => setShowCreate(true)}> Create new Pelumi link</button>
+    <div className='createBtnContainer'><button className='createBtn' onClick={() => setShowCreate(true)}> Create new Pelumi link</button></div>
     </Page>
   );
 }
