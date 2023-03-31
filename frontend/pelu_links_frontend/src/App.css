@@ -32,14 +32,15 @@
   --specifiedColumnSize: 150px
 }
 
-/* .modalOverlay{
+.modalOverlay {
   background-color: rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-} */
+  position: fixed;
+}
 
 .modal {
   z-index: 2;
