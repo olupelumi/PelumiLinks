@@ -181,7 +181,8 @@ function App() {
     // Add Material ui icons - done
     // Create an accordon component on mobile - done
     // Have the accordion component turn into a full row when on desktop - done
-  // Create the modals when I'm doing actions on the pelumi links (create, updaate, delete)
+  // Create the modals when I'm doing actions on the pelumi links (create, updaate, delete) - done
+  // Setup modal positioning for mobile
   // Update the readme
   // Reaorganize where code lives in the files
 
@@ -193,7 +194,6 @@ function App() {
     axios.get('http://127.0.0.1:3000')
       .then(response => {
         setUrls(response.data);
-        console.log(response.data)
       })
       .catch(error => {
         console.error(error);
