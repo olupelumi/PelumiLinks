@@ -112,6 +112,8 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
   }
 
   return (
+    <>
+    <div className="modalOverlay" onClick={() => setShowDelete(false)}></div>
     <div className='modal'>
       Are you sure you want to delete?
       <div>
@@ -123,6 +125,7 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
       <button onClick={() => {deleteURl(); setShowDelete(false)}}>Yes</button>
       <button onClick={() => setShowDelete(false)}>No</button>
     </div>
+    </>
   ) 
 }
 
@@ -142,6 +145,8 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
   }
 
   return (
+    <>
+    <div className="modalOverlay" onClick={() => setShowCreate(false)}></div>
     <div className='modal'>
       <div>
         Shortcut:<input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input> 
@@ -152,6 +157,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
       <button onClick={() => {createURl(); setShowCreate(false);}}>Create</button>
       <button onClick={() => setShowCreate(false)}> Close </button> 
     </div>
+    </>
   ) 
 }
 
