@@ -32,6 +32,26 @@
   --specifiedColumnSize: 150px
 }
 
+/* .modalOverlay{
+  background-color: rgba(0,0,0,0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+} */
+
+.modal {
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border: solid;
+  border-radius: 5px;
+  background: white;
+  padding: 10px;
+}
+
 .urlTableHeader {
   display: grid;
   grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto auto; 

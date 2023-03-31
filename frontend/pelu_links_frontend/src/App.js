@@ -81,8 +81,11 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
         console.error(error);
       });
   }
+
   return (
-    <div>
+    <>
+    <div className="modalOverlay" onClick={() => setShowEdit(false)}></div>
+    <div className='modal'>
       <div>
         Shortcut: {shortcut}
       </div>
@@ -93,6 +96,7 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
       <button onClick={() => {updateURl(); setShowEdit(false)}}>Update</button>
       <button onClick={() => setShowEdit(false)}>close</button>
     </div>
+    </>
   ) 
 }
 const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
@@ -108,7 +112,7 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
   }
 
   return (
-    <div>
+    <div className='modal'>
       Are you sure you want to delete?
       <div>
         Shortcut: {shortcut}
@@ -138,7 +142,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
   }
 
   return (
-    <div>
+    <div className='modal'>
       <div>
         Shortcut:<input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input> 
       </div>
