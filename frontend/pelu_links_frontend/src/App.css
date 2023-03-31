@@ -56,10 +56,17 @@
 .urlTableHeader {
   display: grid;
   grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto auto; 
+  margin-bottom: 10px;
 }
 .urlBlock {
   display: grid;
   border-style: solid;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+
+.shortcut {
+  padding-left: 5px;
 }
 
 .Mobile {

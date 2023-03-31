@@ -9,7 +9,7 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   return (
   <>
   <div className='urlBlock Mobile'>
-    <div>
+    <div className='shortcut'>
       {shortcut}
     </div>
     <div>
@@ -33,7 +33,7 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   return (
     <>
     <div className='urlBlock Desktop'>
-      <div>
+      <div className='shortcut'>
         {shortcut}
       </div>
       <div>
@@ -175,7 +175,7 @@ function App() {
   const [showEdit, setShowEdit] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
-  
+
   useEffect(() => {
     axios.get('http://127.0.0.1:3000')
       .then(response => {
