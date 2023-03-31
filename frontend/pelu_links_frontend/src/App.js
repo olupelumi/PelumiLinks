@@ -171,25 +171,11 @@ const Page = (props) => {
 }
 
 function App() {
-  // Create - done
-  // Read - done
-  // Update - done
-  // Delete - create a separate div - done 
-  // Make the ui actially look nice - design both desktop and mobile views -look at some design references - done
-  // Responsive Design - Mobile first perhaps
-    // Add a size length for shortcuts and show the long urls up to a certain length
-    // Add Material ui icons - done
-    // Create an accordon component on mobile - done
-    // Have the accordion component turn into a full row when on desktop - done
-  // Create the modals when I'm doing actions on the pelumi links (create, updaate, delete) - done
-  // Setup modal positioning for mobile
-  // Update the readme
-  // Reaorganize where code lives in the files
-
   const [urls, setUrls] = useState([]);
   const [showEdit, setShowEdit] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
+  
   useEffect(() => {
     axios.get('http://127.0.0.1:3000')
       .then(response => {
