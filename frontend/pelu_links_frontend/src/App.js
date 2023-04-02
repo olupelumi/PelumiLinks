@@ -137,7 +137,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
     axios.post(`http://127.0.0.1:3000/urls/`, {shortcut: shortcut, long_url: longUrl})
       .then(response => {
         setUrls(response.data);
-        console.log(response.data)
+        console.log('response.data', response.data)
       })
       .catch(error => {
         console.error(error);

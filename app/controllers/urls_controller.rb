@@ -18,7 +18,7 @@ class UrlsController < ApplicationController
         if @url.save
             render json: Url.all
         else
-            render json: {error: "Error creating a new url redirect"}
+            render json: {error: "Error creating a new url redirect"}, status: 400
         end 
     end 
 
