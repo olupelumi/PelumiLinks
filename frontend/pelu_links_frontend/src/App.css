@@ -42,6 +42,10 @@
   position: fixed;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .modal {
   z-index: 2;
   position: fixed;

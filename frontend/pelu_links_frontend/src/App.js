@@ -21,8 +21,8 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   </div>
   { isOpen &&
   <div>
-    <Edit onClick={() => setShowEdit({ shortcut, long_url })}/> 
-    <Delete onClick={() => setShowDelete({ shortcut, long_url })}/>
+    <Edit className='clickable' onClick={() => setShowEdit({ shortcut, long_url })}/> 
+    <Delete className='clickable' onClick={() => setShowDelete({ shortcut, long_url })}/>
   </div>
   }
   </>)
@@ -39,8 +39,8 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
       <div>
         {long_url}
       </div>
-      <Edit onClick={() => setShowEdit({ shortcut, long_url })}/>
-      <Delete onClick={() => setShowDelete({ shortcut, long_url })}/>
+      <Edit className='clickable' onClick={() => setShowEdit({ shortcut, long_url })}/>
+      <Delete className='clickable' onClick={() => setShowDelete({ shortcut, long_url })}/>
     </div>
     </>
   )
@@ -91,7 +91,6 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
       </div>
       <div>
         Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
-  
       </div>
       <button onClick={() => {updateURl(); setShowEdit(false)}}>Update</button>
       <button onClick={() => setShowEdit(false)}>close</button>
@@ -198,7 +197,8 @@ function App() {
     {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit} setUrls={setUrls}/>}
     {showCreate && <UrlCreate setUrls={setUrls} setShowCreate={setShowCreate}/>}
     {showDelete && <UrlDelete shortcut={showDelete.shortcut} long_url={showDelete.long_url} setShowDelete={setShowDelete} setUrls={setUrls}/>}
-    <div className='createBtnContainer'><button className='createBtn' onClick={() => setShowCreate(true)}> Create new Pelumi link</button></div>
+    <div className='createBtnContainer'><button className='createBtn clickable' onClick={() => setShowCreate(true)}> Create new Pelumi link</button></div>
+    
     </Page>
   );
 }
