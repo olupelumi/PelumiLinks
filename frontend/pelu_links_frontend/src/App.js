@@ -118,21 +118,27 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
   }
 
   return (
-    <>
+    <div>
     <div className="modalOverlay" onClick={() => setShowDelete(false)}></div>
     <div className='modal'>
-      Are you sure you want to delete?
-      <div>
-        Shortcut: {shortcut}
+      <div className="modalHeader">
+        <span>Are you sure you want to delete?</span>
       </div>
-      <div>
-        Long Url: {long_url}
+      <div className="modalContent">
+        <div>
+          Shortcut: {shortcut}
+        </div>
+        <div>
+          Long Url: {long_url}
+        </div>
       </div>
-      <button onClick={() => {deleteURl(); setShowDelete(false)}}>Yes</button>
-      <button onClick={() => setShowDelete(false)}>No</button>
-    </div>
-    </>
-  ) 
+      <div className="modalActions">
+        <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowDelete(false)}>Cancel</button>
+        <button className='actionBtn rightBtn' onClick={() => {deleteURl(); setShowDelete(false)}}>Delete</button>
+      </div> 
+  </div>
+  </div>
+) 
 }
 
 const UrlCreate = ({setUrls, setShowCreate}) => {
