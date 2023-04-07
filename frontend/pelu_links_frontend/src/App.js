@@ -90,8 +90,8 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
         <span>Edit Pelumi Link</span>
       </div>
       <div className="modalContent">
-        <div>
-          Shortcut: {shortcut}
+        <div className='bottomGutter'>
+          Shortcut: <input disabled={true} value={shortcut} />
         </div>
         <div>
           Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
@@ -125,7 +125,7 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
         <span>Are you sure you want to delete?</span>
       </div>
       <div className="modalContent">
-        <div>
+        <div className='bottomGutter'>
           Shortcut: {shortcut}
         </div>
         <div>
@@ -164,7 +164,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
         <span>Create Pelumi Link</span>
       </div>
       <div className="modalContent">
-        <div>
+        <div className='bottomGutter'>
           Shortcut: <input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input>
         </div>
         <div>

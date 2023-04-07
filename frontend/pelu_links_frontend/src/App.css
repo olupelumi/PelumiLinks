@@ -59,6 +59,10 @@
   margin-top: 10px;
 }
 
+.bottomGutter {
+  margin-bottom: 5px;
+}
+
 .modal {
   z-index: var(--modalIndex);
   position: fixed;
