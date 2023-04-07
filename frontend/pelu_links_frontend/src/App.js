@@ -160,14 +160,21 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
     <>
     <div className="modalOverlay" onClick={() => setShowCreate(false)}></div>
     <div className='modal'>
-      <div>
-        Shortcut:<input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input> 
+      <div className="modalHeader">
+        <span>Create Pelumi Link</span>
       </div>
-      <div>
-        Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
+      <div className="modalContent">
+        <div>
+          Shortcut: <input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input>
+        </div>
+        <div>
+          Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
+        </div>
       </div>
-      <button onClick={() => {createURl(); setShowCreate(false);}}>Create</button>
-      <button onClick={() => setShowCreate(false)}> Close </button> 
+      <div className="modalActions">
+        <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowCreate(false)}>Cancel</button>
+        <button className='actionBtn rightBtn' onClick={() => {createURl(); setShowCreate(false)}}>Save</button>
+      </div> 
     </div>
     </>
   ) 
