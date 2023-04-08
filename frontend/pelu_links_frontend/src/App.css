@@ -53,6 +53,12 @@
   justify-content: center;
 }
 
+/* .modalContent {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 100px auto;
+} */
+
 .modalActions {
   display: flex;
   justify-content: center;
@@ -100,6 +106,11 @@
   border-radius: 5px;
   width: 170px;
   height: 30px;
+}
+
+.createBtn:hover {
+  background-color: white;
+  color: black; 
 }
 
 .urlTableHeader {
