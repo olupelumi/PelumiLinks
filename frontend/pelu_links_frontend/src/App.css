@@ -46,6 +46,7 @@
 .clickable {
   cursor: pointer;
 }
+
 .modalHeader {
   z-index: var(--modalIndex);  
   margin-bottom: 10px;
@@ -106,6 +107,7 @@
   border-radius: 5px;
   width: 170px;
   height: 30px;
+  transition: background-color 1s linear 1s 
 }
 
 .createBtn:hover {
