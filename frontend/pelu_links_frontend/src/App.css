@@ -47,6 +47,11 @@
   cursor: pointer;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 .modalHeader {
   z-index: var(--modalIndex);  
   margin-bottom: 10px;
@@ -93,7 +98,6 @@
   color: white
 }
 
-
 .createBtnContainer {
   display: flex; 
   justify-content: center; 
@@ -120,6 +124,7 @@
   grid-template-columns: var(--specifiedColumnSize) var(--specifiedColumnSize) auto auto; 
   margin-bottom: 10px;
 }
+
 .urlBlock {
   display: grid;
   border-style: solid;

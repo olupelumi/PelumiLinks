@@ -20,7 +20,7 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
     </div>
   </div>
   { isOpen &&
-  <div>
+  <div className='flex-center'>
     <Edit className='clickable' onClick={() => setShowEdit({ shortcut, long_url })}/> 
     <Delete className='clickable' onClick={() => setShowDelete({ shortcut, long_url })}/>
   </div>
