@@ -142,8 +142,17 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
 }
 
 const UrlCreate = ({setUrls, setShowCreate}) => {
-  const [longUrl, setLongUrl] = useState("")
-  const [shortcut, setShortcut] = useState("")
+  const [longUrl, setLongUrl] = useState("");
+  const [shortcut, setShortcut] = useState("");
+  const [showError, setShowError] = useState(false);
+
+  const errorCheck = (shortcut) => {
+    if (shortcut.length > 7) {
+      setShowError(true)
+    } else {
+      setShortcut(shortcut)
+    }
+  }
 
   const createURl = () => {
     axios.post(`http://127.0.0.1:3000/urls/`, {shortcut: shortcut, long_url: longUrl})
@@ -165,8 +174,13 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
       </div>
       <div className="modalContent">
         <div className='bottomGutter'>
-          Shortcut: <input value={shortcut} onChange={(e)=> setShortcut(e.target.value)}></input>
+          Shortcut: <input value={shortcut} onChange={(e)=> errorCheck(e.target.value)}></input>
         </div>
+        { showError &&
+        <div className='errorText'>
+          A shortcut can't be longer than 7 characters
+        </div>
+        }
         <div>
           Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
         </div>
