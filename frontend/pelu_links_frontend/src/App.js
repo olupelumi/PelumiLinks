@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
-import {KeyboardArrowDown,  KeyboardArrowUp, Edit, Delete, Close} from '@mui/icons-material';
+import {KeyboardArrowDown,  KeyboardArrowUp, Edit, Delete} from '@mui/icons-material';
 
 const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,8 +20,8 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
     </div>
   </div>
   { isOpen &&
-  <div className='flex-center'>
-    <Edit className='clickable' onClick={() => setShowEdit({ shortcut, long_url })}/> 
+  <div className='flex-center mobileModalActions'>
+    <Edit className='clickable rightGutter' onClick={() => setShowEdit({ shortcut, long_url })}/> 
     <Delete className='clickable' onClick={() => setShowDelete({ shortcut, long_url })}/>
   </div>
   }
@@ -39,7 +39,7 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
       <div>
         {long_url}
       </div>
-      <Edit className='clickable' onClick={() => setShowEdit({ shortcut, long_url })}/>
+      <Edit className='clickable rightGutter' onClick={() => setShowEdit({ shortcut, long_url })}/>
       <Delete className='clickable' onClick={() => setShowDelete({ shortcut, long_url })}/>
     </div>
     </>

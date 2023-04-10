@@ -52,6 +52,11 @@
   justify-content: center;
 }
 
+.flex-space-between {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .modalHeader {
   z-index: var(--modalIndex);  
   margin-bottom: 10px;
@@ -59,11 +64,9 @@
   justify-content: center;
 }
 
-/* .modalContent {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 100px auto;
-} */
+.mobileModalActions {
+  margin-bottom: 10px;
+}
 
 .modalActions {
   display: flex;
@@ -73,6 +76,10 @@
 
 .bottomGutter {
   margin-bottom: 5px;
+}
+
+.rightGutter {
+  margin-right: 48px;
 }
 
 .modal {
