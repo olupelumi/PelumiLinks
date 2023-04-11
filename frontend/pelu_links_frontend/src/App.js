@@ -5,13 +5,11 @@ import {KeyboardArrowDown,  KeyboardArrowUp, Edit, Delete} from '@mui/icons-mate
 
 const UrlRowCount = 6;
 
-const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
+const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete, setShowInfo}) => {
   const [isOpen, setIsOpen] = useState(false)
   
-  console.log(long_url, "hello1")
   var display_url;
   if (long_url.length > 15) {
-    console.log(long_url, "hello")
     display_url = long_url.substring(0, 15).concat('...')
   } else {
     display_url = long_url
@@ -23,7 +21,7 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
     <div className='shortcut'>
       {shortcut}
     </div>
-    <div>
+    <div onClick={() => setShowInfo({shortcut, long_url})}>
       {display_url}
     </div>
     <div style={{cursor: 'pointer'}} onClick={()=> setIsOpen(!isOpen)}>
@@ -39,7 +37,7 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   </>)
 }
 
-const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
+const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete, setShowInfo}) => {
 
   return (
     <>
@@ -47,7 +45,7 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
       <div className='shortcut'>
         {shortcut}
       </div>
-      <div>
+      <div onClick={() => setShowInfo({shortcut, long_url})}>
         {long_url}
       </div>
       <Edit className='clickable rightGutter' onClick={() => setShowEdit({ shortcut, long_url })}/>
@@ -57,7 +55,7 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete}) => {
   )
 }
 
-const UrlBlock = ({shortcut, long_url, setShowEdit, setShowDelete}) =>
+const UrlBlock = ({shortcut, long_url, setShowEdit, setShowDelete, setShowInfo}) =>
 {
   const [isMobile, setIsMobile] = useState(false) 
   const handleResize = () => {
@@ -74,11 +72,35 @@ const UrlBlock = ({shortcut, long_url, setShowEdit, setShowDelete}) =>
 
 return (
   <>
-  {isMobile? (<UrlBlockMobile shortcut={shortcut} long_url={long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete}/>):
-  <UrlBlockDesktop shortcut={shortcut} long_url={long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete}/>
+  {isMobile? (<UrlBlockMobile shortcut={shortcut} long_url={long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete} setShowInfo={setShowInfo}/>):
+  <UrlBlockDesktop shortcut={shortcut} long_url={long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete} setShowInfo={setShowInfo}/>
   }
   </>
 )}
+
+const UrlInfo = ({shortcut, long_url, setShowInfo}) => {
+
+  return (
+    <>
+    <div className="modalOverlay" onClick={() => setShowInfo(false)}></div>
+    <div className='modal'>
+      <div className="modalHeader">
+        <span>Edit Pelumi Link</span>
+      </div>
+      <div className="modalContent">
+        <div>
+          Shortcut: 
+        </div>
+        <input disabled={true} value={shortcut} />
+        <div>
+          Long Url: 
+        </div>
+        <textarea disabled={true} rows={UrlRowCount} value={long_url}></textarea>
+      </div>
+    </div>
+    </>
+  )
+}
 
 const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
   const [longUrl, setLongUrl] = useState(long_url)
@@ -222,6 +244,7 @@ function App() {
   const [showEdit, setShowEdit] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
+  const [showInfo, setShowInfo] = useState(false)
 
   useEffect(() => {
     axios.get('http://127.0.0.1:3000')
@@ -240,11 +263,12 @@ function App() {
       <div>Shortcuts</div><div>Long Urls</div>
     </div>
     {urls.map(
-      url => <UrlBlock key={url.shortcut} shortcut={url.shortcut} long_url={url.long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete}/>
+      url => <UrlBlock key={url.shortcut} shortcut={url.shortcut} long_url={url.long_url} setShowEdit={setShowEdit} setShowDelete={setShowDelete} setShowInfo={setShowInfo}/>
     )}
     {showEdit && <UrlEdit shortcut={showEdit.shortcut} long_url={showEdit.long_url} setShowEdit={setShowEdit} setUrls={setUrls}/>}
     {showCreate && <UrlCreate setUrls={setUrls} setShowCreate={setShowCreate}/>}
     {showDelete && <UrlDelete shortcut={showDelete.shortcut} long_url={showDelete.long_url} setShowDelete={setShowDelete} setUrls={setUrls}/>}
+    {showInfo && <UrlInfo shortcut={showInfo.shortcut} long_url={showInfo.long_url} setShowInfo={setShowInfo} />}
     <div className='createBtnContainer'><button className='createBtn clickable' onClick={() => setShowCreate(true)}> Create new Pelumi link</button></div>
     
     </Page>
