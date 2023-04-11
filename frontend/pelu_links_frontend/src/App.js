@@ -90,12 +90,14 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
         <span>Edit Pelumi Link</span>
       </div>
       <div className="modalContent">
-        <div className='bottomGutter'>
-          Shortcut: <input disabled={true} value={shortcut} />
-        </div>
         <div>
-          Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
+          Shortcut: 
         </div>
+        <input disabled={true} value={shortcut} />
+        <div>
+          Long Url: 
+        </div>
+        <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
       </div>
       <div className="modalActions">
         <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowEdit(false)}>Cancel</button>
@@ -124,7 +126,7 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
       <div className="modalHeader">
         <span>Are you sure you want to delete?</span>
       </div>
-      <div className="modalContent">
+      <div>
         <div className='bottomGutter'>
           Shortcut: {shortcut}
         </div>
@@ -151,6 +153,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
       setShowError(true)
     } else {
       setShortcut(shortcut)
+      setShowError(false)
     }
   }
 
@@ -173,17 +176,17 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
         <span>Create Pelumi Link</span>
       </div>
       <div className="modalContent">
-        <div className='bottomGutter'>
-          Shortcut: <input value={shortcut} onChange={(e)=> errorCheck(e.target.value)}></input>
-        </div>
+         <div> Shortcut:</div> 
+         <input value={shortcut} onChange={(e)=> errorCheck(e.target.value)}></input>
         { showError &&
         <div className='errorText'>
           A shortcut can't be longer than 7 characters
         </div>
         }
         <div>
-          Long Url: <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
+          Long Url: 
         </div>
+        <input value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></input>
       </div>
       <div className="modalActions">
         <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowCreate(false)}>Cancel</button>

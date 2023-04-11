@@ -35,6 +35,7 @@
 
 .errorText {
   color: red;
+  font-size: small;
 }
 
 .modalOverlay {
@@ -84,6 +85,10 @@
 
 .rightGutter {
   margin-right: 48px;
+}
+
+.modalContent {
+  display: grid;
 }
 
 .modal {
