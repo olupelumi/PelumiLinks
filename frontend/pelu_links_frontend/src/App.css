@@ -36,6 +36,7 @@
 .errorText {
   color: red;
   font-size: small;
+  max-width: 150px;
 }
 
 .modalOverlay {
