@@ -33,6 +33,10 @@
   --modalIndex: 2;
 }
 
+.errorText {
+  color: red;
+}
+
 .modalOverlay {
   background-color: rgba(0,0,0,0.2);
   z-index: 1;
@@ -118,7 +122,6 @@
   border-radius: 5px;
   width: 170px;
   height: 30px;
-  transition: background-color 1s linear 1s 
 }
 
 .createBtn:hover {
