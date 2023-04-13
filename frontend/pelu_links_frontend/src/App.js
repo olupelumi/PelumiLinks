@@ -39,6 +39,13 @@ const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete, setShow
 
 const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete, setShowInfo}) => {
 
+  var display_url;
+  if (long_url.length > 15) {
+    display_url = long_url.substring(0, 15).concat('...')
+  } else {
+    display_url = long_url
+  }
+
   return (
     <>
     <div className='urlBlock Desktop'>
@@ -46,7 +53,7 @@ const UrlBlockDesktop = ({shortcut, long_url, setShowEdit, setShowDelete, setSho
         {shortcut}
       </div>
       <div onClick={() => setShowInfo({shortcut, long_url})}>
-        {long_url}
+        {display_url}
       </div>
       <Edit className='clickable rightGutter' onClick={() => setShowEdit({ shortcut, long_url })}/>
       <Delete className='clickable' onClick={() => setShowDelete({ shortcut, long_url })}/>
