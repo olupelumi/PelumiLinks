@@ -4,6 +4,7 @@ import axios from 'axios'
 import {KeyboardArrowDown,  KeyboardArrowUp, Edit, Delete} from '@mui/icons-material';
 
 const UrlRowCount = 6;
+const longUrlMaxLength = 120;
 
 const UrlBlockMobile = ({shortcut, long_url, setShowEdit, setShowDelete, setShowInfo}) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -137,7 +138,7 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
         <div>
           Long Url: 
         </div>
-        <textarea maxlength={120} rows={UrlRowCount} value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></textarea>
+        <textarea maxlength={longUrlMaxLength} rows={UrlRowCount} value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></textarea>
       </div>
       <div className="modalActions">
         <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowEdit(false)}>Cancel</button>
@@ -226,7 +227,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
         <div>
           Long Url: 
         </div>
-        <textarea maxlength={120} rows={UrlRowCount} value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></textarea>
+        <textarea maxlength={longUrlMaxLength} rows={UrlRowCount} value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></textarea>
       </div>
       <div className="modalActions">
         <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowCreate(false)}>Cancel</button>
