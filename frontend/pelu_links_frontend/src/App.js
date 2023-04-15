@@ -86,6 +86,22 @@ return (
   </>
 )}
 
+const UrlInfoContent = ({shortcut, long_url}) => {
+
+  return (
+    <div className="modalContent">
+    <div>
+      Shortcut: 
+    </div>
+    <input disabled={true} value={shortcut} />
+    <div>
+      Long Url: 
+    </div>
+    <textarea disabled={true} rows={UrlRowCount} value={long_url}></textarea>
+  </div> 
+  )
+}
+
 const UrlInfo = ({shortcut, long_url, setShowInfo}) => {
 
   return (
@@ -95,16 +111,7 @@ const UrlInfo = ({shortcut, long_url, setShowInfo}) => {
       <div className="modalHeader">
         <span>Edit Pelumi Link</span>
       </div>
-      <div className="modalContent">
-        <div>
-          Shortcut: 
-        </div>
-        <input disabled={true} value={shortcut} />
-        <div>
-          Long Url: 
-        </div>
-        <textarea disabled={true} rows={UrlRowCount} value={long_url}></textarea>
-      </div>
+      <UrlInfoContent shortcut={shortcut} long_url={long_url}/>
     </div>
     </>
   )
@@ -167,14 +174,7 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
       <div className="modalHeader">
         <span>Are you sure you want to delete?</span>
       </div>
-      <div>
-        <div className='bottomGutter'>
-          Shortcut: {shortcut}
-        </div>
-        <div>
-          Long Url: {long_url}
-        </div>
-      </div>
+     <UrlInfoContent shortcut={shortcut} long_url={long_url}/> 
       <div className="modalActions">
         <button className='actionBtn leftBtn'  onClick={() => setShowDelete(false)}>Cancel</button>
         <button className='actionBtn rightBtn' onClick={() => {deleteURl(); setShowDelete(false)}}>Delete</button>
