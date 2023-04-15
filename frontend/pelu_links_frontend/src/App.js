@@ -192,7 +192,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
   const errorCheck = (shortcut) => {
     if (shortcut.length > 7) {
       setShowError(true)
-    } else {
+    } else {  
       setShortcut(shortcut)
       setShowError(false)
     }
