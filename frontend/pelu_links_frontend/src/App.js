@@ -141,7 +141,7 @@ const UrlEdit = ({shortcut, long_url, setShowEdit, setUrls}) => {
         <textarea maxlength={longUrlMaxLength} rows={UrlRowCount} value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></textarea>
       </div>
       <div className="modalActions">
-        <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowEdit(false)}>Cancel</button>
+        <button className='actionBtn leftBtn'  onClick={() => setShowEdit(false)}>Cancel</button>
         <button className='actionBtn rightBtn' onClick={() => {updateURl(); setShowEdit(false)}}>Save</button>
       </div> 
     </div>
@@ -176,7 +176,7 @@ const UrlDelete = ({shortcut, long_url, setShowDelete, setUrls}) => {
         </div>
       </div>
       <div className="modalActions">
-        <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowDelete(false)}>Cancel</button>
+        <button className='actionBtn leftBtn'  onClick={() => setShowDelete(false)}>Cancel</button>
         <button className='actionBtn rightBtn' onClick={() => {deleteURl(); setShowDelete(false)}}>Delete</button>
       </div> 
   </div>
@@ -230,7 +230,7 @@ const UrlCreate = ({setUrls, setShowCreate}) => {
         <textarea maxlength={longUrlMaxLength} rows={UrlRowCount} value={longUrl} onChange={(e)=> setLongUrl(e.target.value)}></textarea>
       </div>
       <div className="modalActions">
-        <button style={{marginRight:'10px'}} className='actionBtn leftBtn'  onClick={() => setShowCreate(false)}>Cancel</button>
+        <button className='actionBtn leftBtn'  onClick={() => setShowCreate(false)}>Cancel</button>
         <button className='actionBtn rightBtn' onClick={() => {createURl(); setShowCreate(false)}}>Save</button>
       </div> 
     </div>
