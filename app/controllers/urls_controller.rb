@@ -9,7 +9,7 @@ class UrlsController < ApplicationController
         unless @url
             render json: {error: 'shortcut not found'}, status: 404
         else
-            redirect_to "https://www." + @url.long_url, allow_other_host: true
+            render json: @url
         end
     end
 
