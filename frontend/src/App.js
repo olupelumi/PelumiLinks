@@ -278,7 +278,11 @@ function App() {
     {showDelete && <UrlDelete shortcut={showDelete.shortcut} long_url={showDelete.long_url} setShowDelete={setShowDelete} setUrls={setUrls}/>}
     {showInfo && <UrlInfo shortcut={showInfo.shortcut} long_url={showInfo.long_url} setShowInfo={setShowInfo} />}
     <div className='createBtnContainer'><button className='createBtn clickable' onClick={() => setShowCreate(true)}> Create new Pelumi link</button></div>
-    
+   <div>
+    <h3>Instructions for use</h3>
+    To redirect to the longer url using the shortcut, add a '/r/[shortcut]' to the end of the domain.
+    Example: '/r/note' will redirect to the notion page.
+    </div> 
     </Page>
   );
 }
